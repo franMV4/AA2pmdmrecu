@@ -134,6 +134,19 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="133dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/favourite_checkbox_add_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Favourite" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <Button

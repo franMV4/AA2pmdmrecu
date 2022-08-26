@@ -22,17 +22,20 @@ public class Car {
     private String color;
     @ColumnInfo
     private String horsePower;
+    @ColumnInfo
+    private boolean favourite;
     @Ignore
     private User user;   // TODO en API contiene un objeto user entero, sacar el ID
 
 
     @Ignore
-    public Car(long id, String brand, String model, String color, String horsePower, User user) {
+    public Car(long id, String brand, String model, String color, String horsePower,boolean favourite, User user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.horsePower = horsePower;
+        this.favourite = favourite;
         this.user = user;
     }
 
@@ -42,6 +45,7 @@ public class Car {
         this.brand = car.getBrand();
         this.model = car.getModel();
         this.horsePower = car.getHorsePower();
+        this.favourite = car.getFavourite();
         this.user = car.getUser();
     }
 
@@ -87,6 +91,10 @@ public class Car {
     public void setHorsePower(String horsePower) {
         this.horsePower = horsePower;
     }
+
+    public boolean getFavourite() {return favourite;}
+
+    public void setFavourite(boolean favourite) {this.favourite = favourite;}
 
 
     public User getUser() {

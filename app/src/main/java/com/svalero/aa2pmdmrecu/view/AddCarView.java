@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -37,6 +38,7 @@ public class AddCarView extends AppCompatActivity implements AddCarContract.View
     private EditText etBrand;
     private EditText etModel;
     private EditText etHorsePower;
+    private CheckBox cbFavourite;
     private Intent intent;
     private AddCarPresenter presenter;
 
@@ -60,6 +62,7 @@ public class AddCarView extends AppCompatActivity implements AddCarContract.View
         etBrand = findViewById(R.id.brand_edittext_add_car);
         etModel = findViewById(R.id.model_edittext_add_car);
         etHorsePower = findViewById(R.id.horsePower_edittext_add_car);
+        cbFavourite = findViewById(R.id.favourite_checkbox_add_car);
         userSpinner = findViewById(R.id.user_spinner_add_car);
         addButton = findViewById(R.id.add_car_button);
 
@@ -111,6 +114,7 @@ public class AddCarView extends AppCompatActivity implements AddCarContract.View
             etBrand.setText(intent.getStringExtra("brand"));
             etModel.setText(intent.getStringExtra("model"));
             etHorsePower.setText(intent.getStringExtra("horsePower"));
+            cbFavourite.setChecked(intent.getBooleanExtra("favourite", false));
 
 
             addButton.setText(R.string.modify_capital);
@@ -122,6 +126,7 @@ public class AddCarView extends AppCompatActivity implements AddCarContract.View
 
         car.setBrand(etBrand.getText().toString().trim());
         car.setModel(etModel.getText().toString().trim());
+        car.setFavourite(cbFavourite.isChecked());
         //TODO Arreglar mirar en los otros int y copiar codigo
         car.setHorsePower(etHorsePower.getText().toString().trim());
         user.setId(users.get(userSpinner.getSelectedItemPosition()).getId());
@@ -138,12 +143,14 @@ public class AddCarView extends AppCompatActivity implements AddCarContract.View
         etBrand.setText("");
         etModel.setText("");
         etHorsePower.setText("");
+        cbFavourite.setChecked(false);
 
     }
 
     @Override
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
     }
 
 

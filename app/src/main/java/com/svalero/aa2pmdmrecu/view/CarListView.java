@@ -231,6 +231,7 @@ public class CarListView extends AppCompatActivity implements CarListContract.Vi
                 intent.putExtra("brand", car.getBrand());
                 intent.putExtra("model", car.getModel());
                 intent.putExtra("horsePower", car.getHorsePower());
+                intent.putExtra("favourite", car.getFavourite());
                 intent.putExtra("userId", car.getUser().getId());
 
                 startActivity(intent);

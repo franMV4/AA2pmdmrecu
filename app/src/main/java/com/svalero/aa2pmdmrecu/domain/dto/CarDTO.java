@@ -12,17 +12,19 @@ public class CarDTO {
     private String model;
     private String color;
     private String horsePower;
+    private boolean favourite;
     private long user;   // TODO en AP
 
     public CarDTO() {
     }
 
 
-    public CarDTO(String brand, String model, String color, String horsePower, long user) {
+    public CarDTO(String brand, String model, String color, String horsePower, boolean favourite, long user) {
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.horsePower = horsePower;
+        this.favourite = favourite;
         this.user = user;
     }
 
@@ -56,9 +58,11 @@ public class CarDTO {
         return horsePower;
     }
 
-    public void setHorsePower(String horsePower) {
-        this.horsePower = horsePower;
-    }
+    public void setHorsePower(String horsePower) {this.horsePower = horsePower;}
+
+    public boolean getFavourite() {return favourite;}
+
+    public void setFavourite(boolean favourite) { this.favourite = favourite;}
 
     public long getUser() {
         return user;

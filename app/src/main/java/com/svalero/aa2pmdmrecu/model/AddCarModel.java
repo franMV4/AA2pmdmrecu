@@ -44,6 +44,7 @@ public class AddCarModel implements AddCarContract.Model {
         carDTO.setModel(car.getModel());
         carDTO.setColor(car.getColor());
         carDTO.setHorsePower(car.getHorsePower());
+        carDTO.setFavourite(car.getFavourite());
         carDTO.setUser(car.getUser().getId());
 
         Call<Car> carCall = api.addCar(carDTO);
@@ -69,6 +70,7 @@ public class AddCarModel implements AddCarContract.Model {
         carDTO.setModel(car.getModel());
         carDTO.setColor(car.getColor());
         carDTO.setHorsePower(car.getHorsePower());
+        carDTO.setFavourite(car.getFavourite());
         carDTO.setUser(car.getUser().getId());
 
         Call<Car> carCall = api.modifyCar(car.getId(), carDTO);
