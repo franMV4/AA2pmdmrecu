@@ -36,9 +36,8 @@
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/app_name"
-                android:onClick="takePhoto"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/computer_default" />
+                app:srcCompat="@drawable/car_default" />
 
         </androidx.cardview.widget.CardView>
 

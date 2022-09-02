@@ -37,7 +37,6 @@ public class CarAdapter extends BaseAdapter {
         Car car = (Car) getItem(position);
 
         convertView = inflater.inflate(R.layout.user_and_car_adapter, null);
-       // ImageView carImage = (ImageView) convertView.findViewById(R.id.user_car_item_imageView);
         TextView carmodel = convertView.findViewById(R.id.user_car_tv1);
         TextView carHorsePower = convertView.findViewById(R.id.user_car_tv2);
 

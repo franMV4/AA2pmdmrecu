@@ -25,8 +25,4 @@
         android:id="@+id/order_by_ram_item"
         android:title="matricula" />
 
-    <item
-        android:id="@+id/order_by_computer_model_item"
-        android:title="moto" />
-
 </menu>

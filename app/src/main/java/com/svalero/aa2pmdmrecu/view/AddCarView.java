@@ -3,9 +3,7 @@ package com.svalero.aa2pmdmrecu.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,10 +19,8 @@ import com.svalero.aa2pmdmrecu.contract.AddCarContract;
 import com.svalero.aa2pmdmrecu.domain.Car;
 import com.svalero.aa2pmdmrecu.domain.User;
 import com.svalero.aa2pmdmrecu.presenter.AddCarPresenter;
-import com.svalero.aa2pmdmrecu.util.ImageUtils;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 public class AddCarView extends AppCompatActivity implements AddCarContract.View {
@@ -139,7 +135,7 @@ public class AddCarView extends AppCompatActivity implements AddCarContract.View
     @Override
     public void cleanForm() {
 
-        carImage.setImageResource(R.drawable.computer_default);
+        carImage.setImageResource(R.drawable.car_default);
         etBrand.setText("");
         etModel.setText("");
         etHorsePower.setText("");

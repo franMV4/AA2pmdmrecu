@@ -44,7 +44,7 @@ public class UserAdapter extends BaseAdapter {
             userImage.setImageBitmap(ImageUtils.getBitmap(decode));
             //userImage.setImageBitmap(ImageUtils.getBitmap(user.getUserImage()));
         } else {
-            userImage.setImageResource(R.drawable.user);
+            userImage.setImageResource(R.drawable.user_default);
         }
         userNameAndSurnameTv.setText(user.getName() + " " + user.getSurname());
         userDniTv.setText(user.getDni());

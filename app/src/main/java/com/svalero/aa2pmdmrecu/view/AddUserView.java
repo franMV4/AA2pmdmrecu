@@ -1,7 +1,5 @@
 package com.svalero.aa2pmdmrecu.view;
 
-import static com.svalero.aa2pmdmrecu.util.ImageUtils.byteToBitmap;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +15,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,7 +26,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.squareup.picasso.Picasso;
 import com.svalero.aa2pmdmrecu.R;
 import com.svalero.aa2pmdmrecu.contract.AddUserContract;
 import com.svalero.aa2pmdmrecu.domain.User;
@@ -52,6 +47,8 @@ public class AddUserView extends AppCompatActivity implements AddUserContract.Vi
     private Intent intent;
     private Button addButton;
     private AddUserPresenter presenter;
+    private int SELECT_PICTURE_RESULT = 0;
+    private int REQUEST_IMAGE_CAPTURE = 0;
 
     private boolean modifyUser;
 
@@ -145,7 +142,7 @@ public class AddUserView extends AppCompatActivity implements AddUserContract.Vi
 
     @Override
     public void cleanForm() {
-        userImage.setImageResource(R.drawable.user);
+        userImage.setImageResource(R.drawable.user_default);
         etName.setText("");
         etSurname.setText("");
         etDni.setText("");
@@ -164,14 +161,44 @@ public class AddUserView extends AppCompatActivity implements AddUserContract.Vi
     //Método para tomar foto
 
     public void takePhoto(View view) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+       /* Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, 1);
-        }
+            startActivityForResult(takePictureIntent, 1);}
+            */
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.choose_photo)
+                .setPositiveButton(R.string.camera,
+                        (dialog, which) -> {
+                            REQUEST_IMAGE_CAPTURE = 1;
+                            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
+                                    PackageManager.PERMISSION_GRANTED) {
+                                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+                            }
+                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                            }
+                        })
+                .setNegativeButton(R.string.galery,
+                        (dialog, which) -> {
+                            SELECT_PICTURE_RESULT = 1;
+                            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            startActivityForResult(intent, SELECT_PICTURE_RESULT);
+                        }
+                );
+        builder.create().show();
+
     }
+
+
+
+
+
+
     // Muestra la vista previa en un imageWiev de la foto tomada
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

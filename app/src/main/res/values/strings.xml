@@ -35,5 +35,9 @@
     <string name="select_map_position">Selecciona una posición en el mapa</string>
     <string name="added_car">Coche añadido</string>
     <string name="modified_car">Coche modificado</string>
+    <string name="choose_photo">Elige una foto</string>
+    <string name="camera">Camara</string>
+    <string name="galery">Galeria</string>
+
 </resources>
 
